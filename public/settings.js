@@ -1,6 +1,6 @@
 const WoditorGameSettings = {
-    projectId: "default",                     // ブラウザの保存先に利用されます(一応日本語でも可)
-    projectName: "ウルファールのサンプルゲーム", // タイトルバーに表示されます
+    projectId: "oikumene",                     // ブラウザの保存先に利用されます(一応日本語でも可)
+    projectName: "オイクメネ", // タイトルバーに表示されます
     noSystemTouch: false,                     // false 何もしない true ブラウザウディタが用意したタッチ操作を無効化してマウスエミュレート
     requestFullScreen: false,                 // false 何もしない true ゲーム起動時に↓方向のフルスクリーン化を試みる(iOS無効)
     lockOrientation: "landscape-primary",     // 固定する画面方向(フルスクリーン時のみ有効) 
