@@ -357,8 +357,16 @@ async function customTestFileChanged(urlStr, pathStr) { // ファイルの要求
                 modifiedInfo = response.headers.get('Last-Modified');
             }
 
+            // ETagもLast-Modifiedも取れない場合(Renderなど一部CDN): キャッシュ済みならDLスキップ、未キャッシュなら一度だけDL
             if (modifiedInfo === null) {
-                modifiedInfo = "null";
+                if (FS.analyzePath(filePathStr, false).exists) {
+                    console.log("no-etag cached, skip: " + pathStr);
+                    return false;
+                } else {
+                    console.log("no-etag first download: " + pathStr);
+                    FS.writeFile(filePathStr, "cached", { flags: 'w+' });
+                    return true;
+                }
             }
 
             if (FS.analyzePath(filePathStr, false).exists) {
